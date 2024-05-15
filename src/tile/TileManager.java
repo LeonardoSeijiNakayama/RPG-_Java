@@ -16,8 +16,8 @@ import main.PainelJogo;
 
 public class TileManager {
     PainelJogo pJ;
-    Tile[] tile;
-    int mapaTileNum[][];
+    public Tile[] tile;
+    public int mapaTileNum[][];
 
     public TileManager(PainelJogo pJ){
 
@@ -39,9 +39,11 @@ public class TileManager {
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(new FileInputStream("res/terreno/aguaTile.png"));
+            tile[1].colisao = true;
            
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(new FileInputStream("res/terreno/tijoloTile.png"));
+            tile[2].colisao = true;
         
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(new FileInputStream("res/terreno/areiaTile.png"));
@@ -51,9 +53,11 @@ public class TileManager {
 
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(new FileInputStream("res/coisas/arvoreTile.png"));
+            tile[5].colisao = true;
 
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(new FileInputStream("res/coisas/coqueiroTile.png"));
+            tile[6].colisao = true;
         } catch (IOException e) {
             e.printStackTrace();
         }

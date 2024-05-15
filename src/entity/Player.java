@@ -1,7 +1,7 @@
 package entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import java.io.FileInputStream;
@@ -26,6 +26,7 @@ public class Player extends Entity{
         getPlayerImage();
         telaX = pJ.LarguraJanela/2 - (pJ.TamTile/2);
         telaY = pJ.AlturaJanela/2 - (pJ.TamTile/2);
+        areaSolida = new Rectangle(8, 16, 32, 32);
     }
 
     public void defineValoresPadroes(){
@@ -61,16 +62,32 @@ public class Player extends Entity{
             
             if(cF.pressCima == true){
                 direcao = "cima";
-                worldY -= velocidade;
             }else if(cF.pressBaixo == true){
                 direcao = "baixo";
-                worldY += velocidade;
             }else if(cF.pressEsquerda == true){
                 direcao = "esq";
-                worldX -= velocidade;
             }else if(cF.pressDireita == true){
                 direcao = "dir";
-                worldX += velocidade;
+            }
+
+            colisaoOn = false;
+            pJ.cColisao.ChecaTile(this); 
+
+            if(colisaoOn == false){
+                switch(direcao){
+                    case "cima":
+                        worldY -= velocidade;
+                    break;
+                    case "baixo":
+                        worldY += velocidade;
+                    break;
+                    case "esq": 
+                        worldX -= velocidade;
+                    break;
+                    case "dir":
+                        worldX += velocidade;
+                    break;
+                }
             }
     
             contaSprite++;
@@ -83,10 +100,7 @@ public class Player extends Entity{
                 }
                 contaSprite = 0;
             }
-
         }
-
-      
     }
 
     public void draw(Graphics2D g2){

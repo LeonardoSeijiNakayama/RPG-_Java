@@ -32,6 +32,7 @@ public class PainelJogo extends JPanel implements Runnable{
 
     ConfTeclado  confTec = new ConfTeclado();
     Thread gameThread;
+    public ChecadorColisao cColisao = new ChecadorColisao(this);
     public Player player = new Player(this, confTec);
     TileManager tileM = new TileManager(this);
 

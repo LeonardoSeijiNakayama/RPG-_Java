@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Entity {
@@ -11,5 +12,8 @@ public class Entity {
 
     public int contaSprite = 0;
     public int numSprite = 1;
+
+    public Rectangle areaSolida;
+    public boolean colisaoOn = false;
     
 }
